@@ -19,9 +19,9 @@ import java.util.Date;
 
 
 public class Packet extends Thread{
-    private static PcapIf device;
-    private static StringBuilder errorBuffer;
-    public JTextArea textArea;
+    private static PcapIf device; // interface
+    private static StringBuilder errorBuffer; // error string
+    public JTextArea textArea; // screen
     private volatile boolean running;
     Packet(PcapIf d,StringBuilder e,JTextArea t){
         device = d;
@@ -38,7 +38,7 @@ public class Packet extends Thread{
             try {
                 String name = (device.getDescription().isEmpty()) ? device.getName()
                         : device.getDescription();
-                textArea.setText("\nChoosing"+name+"on your behalf:\n");
+                textArea.setText("\nChoosing "+name+"on your behalf:\n");
 
             int snapLength = 64 * 1024; // Capture all packets, no truncation
             int flags = Pcap.MODE_PROMISCUOUS; // capture all packets

@@ -2,7 +2,8 @@ import org.jnetpcap.PcapIf;
 import javax.swing.*;
 import java.awt.*;
 
-public class SpoofPage  {
+public class SpoofPage
+{
     JFrame frame = new JFrame();
     JButton myButton1 = new JButton("Run");
     JButton myButton2 = new JButton("Stop");
@@ -20,10 +21,22 @@ public class SpoofPage  {
         // Getting the device from the Main page through the constructor
         this.device = finalJ;
         frame.setTitle("Network Packet Sniffer");
-        myButton1.setBounds(100,160,200,40);
+        myButton1.setBounds(400,400,800,70);
         myButton1.setFocusable(false);
-        myButton2.setBounds(100,160,200,40);
+        myButton1.setBackground(Color.black);
+        myButton1.setForeground(Color.white);
+        myButton1.setSize(40,40);
+        myButton1.setPreferredSize(new Dimension(70, 40));
+        myButton2.setPreferredSize(new Dimension(70, 40));
+
+        myButton2.setSize(40,40);
+        // myButton1.setFocusable(true);
+        myButton2.setBounds(400,400,800,70);
         myButton2.setFocusable(false);
+        myButton2.setBackground(Color.CYAN);
+        myButton2.setForeground(Color.orange);
+
+        //myButton2.setFocusable(true);
         myButton2.setVisible(false);
 
         Packet p = new Packet(device,errorBuffer,textArea);
@@ -47,10 +60,17 @@ public class SpoofPage  {
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);
 
+
+        JPanel panel2 = new JPanel();
+        panel2.setBackground(Color.gray);
+        frame.add(panel2, BorderLayout.SOUTH);
+        panel2.setLayout(new FlowLayout());
+
         // Panel1
         JPanel panel1 = new JPanel();
         panel1.setBackground(Color.BLUE);
         panel1.setLayout(new FlowLayout());
+
         frame.getContentPane().add(scrollableTextArea,BorderLayout.CENTER);
         panel1.add(myButton1);
         panel1.add(myButton2);
